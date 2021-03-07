@@ -1,0 +1,32 @@
+<!-- <label> Options</label>
+<h3> {{options | json }} </h3>
+<label> Filter </label>
+<h3> {{filter}} </h3>
+
+<label> FilterBy</label>
+<h3> {{filterBy}} </h3> -->
+
+
+<div class="dropdown-container">
+  <div class="dropdown-button noselect" (click)="hideDropDown = !hideDropDown">
+    <div class="dropdown-label">States</div>
+    <div class="dropdown-quantity">(<span class="quantity">Any</span>)</div>
+    <span class="down-arrow-icon"> &#9660;</span>
+    <i class="fa fa-filter"></i>
+  </div>
+  <div class="dropdown-list" *ngIf="!hideDropDown">
+    <input type="search" #value (input)="onKeyPress(value)" placeholder="Search states" class="dropdown-search">
+    <ul *ngIf="filteredData.length == 0 && searchKeyword === ''">
+      <li *ngFor="let opt of options; let i = index">
+        <input [id]="i"  type="checkbox"  (change)="selected($event , i)" [value]="opt">
+        <label [for]="i"> {{opt.label}}</label>
+      </li>
+    </ul>
+    <ul *ngIf="filteredData.length != 0 || searchKeyword !== ''">
+      <li *ngFor="let opt of filteredData; let i = index">
+        <input [id]="i"  type="checkbox"  (change)="selected($event , i)" [value]="opt">
+        <label [for]="i"> {{opt.label}}</label>
+      </li>
+    </ul>
+  </div>
+</div>
