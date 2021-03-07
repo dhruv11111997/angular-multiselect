@@ -10,7 +10,7 @@ export class AppComponent {
 
   constructor() {
     this.countries = [
-      {
+      { 
         label: "India",
         value: "IN"
       },
